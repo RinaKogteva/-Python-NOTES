@@ -28,3 +28,15 @@ def create_note():
     note = {"id": note_id, "timestamp": timestamp}
     save_notes()
     
+# Функция для сохранения заметок в файл
+def save_notes():
+    global data
+    out = asksaveasfile(mode="w", defaultextension=".json")
+    data = text.get('1.0', END)
+    try:
+        out.write(data.rstrip())
+    except Exception:
+        messagebox.showerror("Ошибка", "Не получилось сохранить файл!")
+    data2 = text.get('1.0', '1.15')
+    new_button = Button(frame_base, text=data2, command=open_name_file)
+    new_button.pack(side=TOP, pady=5, padx=5)
