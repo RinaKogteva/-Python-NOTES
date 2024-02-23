@@ -88,3 +88,8 @@ def autosave():
     root.after(30000 * 1, autosave)
     
 # Загрузка заметок из файла при запуске программы
+if os.path.exists("notes.json"):
+    with open("notes.json", "r") as file:
+        notes = json.load(file)
+else:
+    notes = []
