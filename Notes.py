@@ -59,3 +59,13 @@ def edit_note():
             return
     print("Заметка с указанным ID не найдена")
 
+# Функция открытия файлов
+def open_file():
+    global file_name
+    inp = askopenfile(mode='r')
+    if inp is None:
+        return
+    note_name = inp.name
+    data = inp.read()
+    text.delete('1.0', END)
+    text.insert('1.0', data)
