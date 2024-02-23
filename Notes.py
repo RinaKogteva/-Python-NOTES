@@ -69,3 +69,14 @@ def open_file():
     data = inp.read()
     text.delete('1.0', END)
     text.insert('1.0', data)
+
+# Функция перезапуска
+def restart_font():
+    global font
+    font = str(entry.get())
+    if font == "":
+        messagebox.showerror("Ошибка", "Поле ввода шрифта пусто")
+    else:
+        text.config(font=font)
+        
+#Функция автосохранения файла
