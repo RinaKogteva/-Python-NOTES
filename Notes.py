@@ -93,3 +93,12 @@ if os.path.exists("notes.json"):
         notes = json.load(file)
 else:
     notes = []
+
+file_menu.add_command(label="Новый",command=create_note)
+file_menu.add_command(label="Открыть файл", command=open_file)
+file_menu.add_command(label="Сохранить как...", command=save_notes)
+file_menu.add_command(label="Редактировать",command=edit_note)
+
+#Запуск окна
+root.config(menu=menu_bar)
+root.mainloop()
