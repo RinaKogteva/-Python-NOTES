@@ -47,3 +47,15 @@ def read_notes():
         print(f"{note['id']}.({note['timestamp']})")
     if not notes:
         print("Нет заметок")
+        
+# Функция для редактирования заметки
+def edit_note():
+    note_id = int(input("Введите ID заметки, которую хотите отредактировать: "))
+    for note in notes:
+        if note['id'] == note_id:
+            note['timestamp'] = datetime.datetime.now().strftime("%Y-%M-%D %H:%M:%S")
+            save_notes()
+            print("Заметка успешно отредактирована")
+            return
+    print("Заметка с указанным ID не найдена")
+
