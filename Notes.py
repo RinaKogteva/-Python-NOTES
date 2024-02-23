@@ -40,3 +40,10 @@ def save_notes():
     data2 = text.get('1.0', '1.15')
     new_button = Button(frame_base, text=data2, command=open_name_file)
     new_button.pack(side=TOP, pady=5, padx=5)
+
+# Функция для чтения всех заметок
+def read_notes():
+    for note in notes:
+        print(f"{note['id']}.({note['timestamp']})")
+    if not notes:
+        print("Нет заметок")
