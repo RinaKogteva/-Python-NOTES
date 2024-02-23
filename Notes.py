@@ -1,5 +1,6 @@
 #Импортируем необходимые библиотеки
 import json
+import os
 import datetime
 from tkinter import *
 from tkinter import messagebox
@@ -38,7 +39,7 @@ def save_notes():
     except Exception:
         messagebox.showerror("Ошибка", "Не получилось сохранить файл!")
     data2 = text.get('1.0', '1.15')
-    new_button = Button(frame_base, text=data2, command=open_name_file)
+    new_button = Button(frame_base, text=data2, command=create_note)
     new_button.pack(side=TOP, pady=5, padx=5)
 
 # Функция для чтения всех заметок
@@ -87,12 +88,6 @@ def autosave():
         json.dump(text_save, f, indent=4, ensure_ascii=False)
     root.after(30000 * 1, autosave)
     
-# Загрузка заметок из файла при запуске программы
-if os.path.exists("notes.json"):
-    with open("notes.json", "r") as file:
-        notes = json.load(file)
-else:
-    notes = []
 
 file_menu.add_command(label="Новый",command=create_note)
 file_menu.add_command(label="Открыть файл", command=open_file)
