@@ -79,4 +79,12 @@ def restart_font():
     else:
         text.config(font=font)
         
-#Функция автосохранения файла
+# Функция автосохранения файла
+def autosave():
+    way = "last.json"
+    text_save = text.get('1.0', END)
+    with open(way, "w") as f:
+        json.dump(text_save, f, indent=4, ensure_ascii=False)
+    root.after(30000 * 1, autosave)
+    
+# Загрузка заметок из файла при запуске программы
