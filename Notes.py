@@ -16,6 +16,10 @@ ont = StringVar()
 
 frame_ent = Frame(root, bg="grey")
 frame_ent.place(relheight=0.05)
+text.place(relheight=0.9, relwidth=0.90, rely=0.05)
+
+frame_base = Frame(root)
+frame_base.place(relheight=0.95, relx=0.9, rely=0.05)
 menu_bar = Menu(root)
 file_menu = Menu(menu_bar)
 menu_bar.add_cascade(label='Файл', menu = file_menu)
@@ -24,9 +28,8 @@ menu_bar.add_cascade(label='Файл', menu = file_menu)
 def create_note():
     global note_name
     text.delete('1.0', END)
-    note_id = len(notes) + 1
     timestamp = datetime.datetime.now().strftime("%Y-%M-%D %H:%M:%S")
-    note = {"id": note_id, "timestamp": timestamp}
+    note = {"timestamp": timestamp}
     save_notes()
     
 # Функция для сохранения заметок в файл
