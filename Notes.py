@@ -19,3 +19,12 @@ menu_bar = Menu(root)
 file_menu = Menu(menu_bar)
 menu_bar.add_cascade(label='Файл', menu = file_menu)
 
+# Функция для создания новой заметки
+def create_note():
+    global note_name
+    text.delete('1.0', END)
+    note_id = len(notes) + 1
+    timestamp = datetime.datetime.now().strftime("%Y-%M-%D %H:%M:%S")
+    note = {"id": note_id, "timestamp": timestamp}
+    save_notes()
+    
